@@ -12,7 +12,8 @@ class Directory extends React.Component {
 					title: 'hats',
 					imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
 					id: 1,
-					linkUrl: 'shop/hats'
+					// linkUrl: 'shop/hats'
+					linkUrl: 'hats'
 				},
 				{
 					title: 'jackets',
@@ -47,13 +48,21 @@ class Directory extends React.Component {
 		return (
 			<Fragment>
 				<div className='directory-menu'>
-					{this.state.sections.map(({ title, imageUrl, id, size }) => (
-						<MenuItem key={id} title={title} imageUrl={imageUrl} size={size} />
+					{this.state.sections.map(({ id, ...otherSectionProps }) => (
+						<MenuItem key={id} {...otherSectionProps} />
 					))}
 				</div>
+				);
 			</Fragment>
 		);
 	}
 }
 
 export default Directory
+
+
+
+
+				// {/* One way of passing props below. We will comment this below approach out and create the same thing above using ...otherSectionProps(this code can replace above code) */}
+				// {this.state.sections.map(({ title, imageUrl, id, size }) => (
+				// 	<MenuItem key={id} title={title} imageUrl={imageUrl} size={size} />
